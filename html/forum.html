@@ -9,15 +9,17 @@ $def with (_, threads, isadm, page_data)
 <!-- Title -->
 <table width="100%" class="title">
 <tr>
-<td width="10%" class="tal"></td>
-<th width="80%" class="tac">$_['forum_title']</th>
-<td width="10%" class="tar">
-<button class="link" name="link" value="profile">$_['profile']</button>
-<br>
-<button class="link" name="link" value="users">$_['users']</button>
+<td width="10%" align="left"></td>
+<th width="80%" align="center">$_['forum_title']</th>
+<td width="10%" align="right">
+
+<table>
+<tr><td align="right"><button class="link" name="link" value="profile">$_['profile']</button></td></tr>
+<tr><td align="right"><button class="link" name="link" value="users">$_['users']</button></td></tr>
 $if isadm:
-    <br>
-    <button class="link" name="link" value="admin">$_['admin_link']</button>
+    <tr><td align="right"><button class="link" name="link" value="admin">$_['admin_link']</button></td></tr>
+</table>
+
 </td>
 </tr>
 <tr><td><br></td></tr>
