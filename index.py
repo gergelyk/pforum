@@ -188,6 +188,74 @@ class Thread:
 
         raise web.seeother(web.ctx.path + '#bottom') # stay here, only refresh
 
+class Users:
+    """List of users"""
+    
+    @auth.protected(session, '/')
+    def GET(self):
+        html = render.users(tr.text[db.get_lang(session.uid)],
+                            db.get_user_list())
+        return html
+
+    def POST(self):
+        data = web.input()
+        if 'back' in data:
+            raise web.seeother('/forum#top')
+            
+class Profile:
+    """Profile of current user"""
+    
+    @auth.protected(session, '/')
+    @form.session_init(session, {'user': {}})
+    def GET(self):
+        user = session.page_data['user']
+        if not user:
+            user = db.get_user(session.uid)
+            session.page_data['user'] = user
+
+        # generate colors specifiers to be used in HTML
+        color = utils.hue_to_color(user['hue'])
+        color_template = lambda c: '<button class="clink" style="background: #' + \
+                                   utils.hue_to_color(float(c)/config.colorbar_len) + \
+                                   '" id="color" name="color" value="' + str(c) + '">&#160;</button>'
+
+        colors = ''.join([color_template(c) for c in range(config.colorbar_len)])
+
+        # generate 'selected' tag for the item which corresponds to the language of current user
+        languages = tr.text.keys()
+        lang_selected = {lang: ['','selected'][user['lang']==lang] for lang in languages}
+        
+        html = render.profile(tr.text[db.get_lang(session.uid)],
+                              user,
+                              color,
+                              colors,
+                              lang_selected)
+        return html
+
+    def POST(self):
+        data = web.input()
+        user = {'name': data['name'],
+                'pass': data['pass'],
+                'hue': session.page_data['user']['hue'],
+                'lang': data['lang']}
+                
+        for key in user.keys():
+            session.page_data['user'][key] = user[key]
+            
+        if 'cancel' in data:
+            raise web.seeother('/forum#top')
+            
+        elif 'apply' in data:
+            if data['name']:
+                # no errors
+                db.set_user(session.uid, **user)
+                raise web.seeother('/forum#top')
+                
+        elif 'color' in data:
+            session.page_data['user']['hue'] = float(int(data.color)) / config.colorbar_len
+            
+        raise web.seeother(web.ctx.path) # stay here, only refresh
+
 class Admin:
     """Admin panel"""
 
@@ -283,74 +351,6 @@ class Admin:
         elif 'shortcut' in data:
             session.page_data['query'] = data.shortcut
 
-        raise web.seeother(web.ctx.path) # stay here, only refresh
-        
-class Users:
-    """List of users"""
-    
-    @auth.protected(session, '/')
-    def GET(self):
-        html = render.users(tr.text[db.get_lang(session.uid)],
-                            db.get_user_list())
-        return html
-
-    def POST(self):
-        data = web.input()
-        if 'back' in data:
-            raise web.seeother('/forum#top')
-            
-class Profile:
-    """Profile of current user"""
-    
-    @auth.protected(session, '/')
-    @form.session_init(session, {'user': {}})
-    def GET(self):
-        user = session.page_data['user']
-        if not user:
-            user = db.get_user(session.uid)
-            session.page_data['user'] = user
-
-        # generate colors specifiers to be used in HTML
-        color = utils.hue_to_color(user['hue'])
-        color_template = lambda c: '<button class="clink" style="background: #' + \
-                                   utils.hue_to_color(float(c)/config.colorbar_len) + \
-                                   '" id="color" name="color" value="' + str(c) + '">&#160;</button>'
-
-        colors = ''.join([color_template(c) for c in range(config.colorbar_len)])
-
-        # generate 'selected' tag for the item which corresponds to the language of current user
-        languages = tr.text.keys()
-        lang_selected = {lang: ['','selected'][user['lang']==lang] for lang in languages}
-        
-        html = render.profile(tr.text[db.get_lang(session.uid)],
-                              user,
-                              color,
-                              colors,
-                              lang_selected)
-        return html
-
-    def POST(self):
-        data = web.input()
-        user = {'name': data['name'],
-                'pass': data['pass'],
-                'hue': session.page_data['user']['hue'],
-                'lang': data['lang']}
-                
-        for key in user.keys():
-            session.page_data['user'][key] = user[key]
-            
-        if 'cancel' in data:
-            raise web.seeother('/forum#top')
-            
-        elif 'apply' in data:
-            if data['name']:
-                # no errors
-                db.set_user(session.uid, **user)
-                raise web.seeother('/forum#top')
-                
-        elif 'color' in data:
-            session.page_data['user']['hue'] = float(int(data.color)) / config.colorbar_len
-            
         raise web.seeother(web.ctx.path) # stay here, only refresh
 
 if __name__ == '__main__':
