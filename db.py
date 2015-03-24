@@ -210,13 +210,16 @@ def mark_read(uid, tid):
         # check if an entry for this uid & tid already exists
         where = 'uid = ' + str(uid) + ' and tid = ' + str(tid)
         history = [p for p in webdb.select('HISTORY', where=where)]
-        if history:
-            # no need to update history if there are no new posts
-            if history[0]['pid'] < pid:
-                webdb.update('HISTORY', where=where, pid=pid)
-        else:
-            # there is no entry for this uid & tid yet
-            webdb.insert('HISTORY', uid=uid, tid=tid, pid=pid)
+        try:    
+            if history:
+                # no need to update history if there are no new posts
+                if history[0]['pid'] < pid:
+                    webdb.update('HISTORY', where=where, pid=pid)
+            else:
+                # there is no entry for this uid & tid yet
+                webdb.insert('HISTORY', uid=uid, tid=tid, pid=pid)
+        except: # e.g. database file can be read-only
+            pass
 
 def get_history_pid(uid, tid):
     """Returns pid of the last post in the thread specified by tid,
