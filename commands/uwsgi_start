@@ -1,0 +1,8 @@
+#!/bin/bash
+
+APPDIR=$(dirname $(dirname $(readlink -f $0)))
+URL=127.0.0.1:8080
+
+uwsgi --http $URL --chdir $APPDIR --pidfile $APPDIR/uwsgi.pid --wsgi index --master --processes 1 --workers 1 --threads 1 --route "/static/(.*) static:$APPDIR/static/\$1" --logto /dev/null &
+
+

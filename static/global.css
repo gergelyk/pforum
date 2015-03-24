@@ -1,0 +1,314 @@
+/* DEBUGGING */
+/*
+table {
+    border: 1px solid red;
+}
+
+td {
+    border: 1px dotted red;
+}
+    
+th {
+    border: 1px dotted blue;
+}
+*/
+
+
+/* GLOBALS */
+table {
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif
+}
+td {
+    padding: 0px;
+    margin: 0px;
+}
+    
+th {
+    padding: 0px;
+    margin: 0px;
+}
+
+form {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right :0px;
+}
+
+button {
+    font-size: 70%;
+    font-family: sans-serif;
+}
+
+input {
+    font-size: 80%;
+}
+
+.tal {
+    text-align: left;
+}
+
+.tac {
+    text-align: center;
+}
+
+.tar {
+    text-align: right;
+}
+
+/* FORUM */
+
+table.title {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+table.threads {
+    font-size: 80%;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+}
+
+table.threads th {
+    border-width: 1px;
+    padding: 4px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+
+table.threads td {
+    border-width: 1px;
+    padding: 4px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+table.threads tr:hover td {
+    background-color: #eeeeee;
+}
+
+table.threads table.thread_form {
+    border-style: none;
+}
+
+table.threads table.thread_form th {
+    border-style: none;
+    padding: 0px;
+}
+
+table.threads input {
+    width: 100%;
+}
+
+/* THREAD */
+
+td.title {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+td.users {
+    font-weight: bold;
+    font-size: 80%;
+    color: #999999;
+}
+
+table.posts td {
+    padding: 4px;
+}
+
+button.link {
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+button.link:hover {
+    font-weight: bold;
+}
+
+fieldset {
+    padding: 0.2em 0.2em;
+    border: 1px solid #555555;
+    background-color: lightgray;
+    }
+
+legend {
+    font-size: 70%;
+    padding: 0.2em 0.5em;
+    border: 1px solid #555555;
+    color: #555555;
+    }
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    font-family: monospace;
+    border-color: #555555;
+    border-width: 1px;
+    font-size: 100%;
+    }
+
+button.post_button {
+    width: 100px;
+    height: 28px;
+}
+
+table.post_preview td.text {
+    padding: 4px;
+    }
+    
+table.post_buttons td {
+    padding: 0px;
+}
+
+table.emots td {
+    padding: 0px;
+    white-space: nowrap;
+}
+
+table.helpers td {
+    padding: 4px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* MARKDOWN TAGS */
+
+table.post_preview table {
+    padding: 0;
+    margin: 0;
+    }
+
+table.post_preview td {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview th {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview p {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview ul {
+    margin: 0;
+    }
+
+table.post_preview h1 {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview h2 {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview h3 {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview h4 {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview h5 {
+    padding: 0;
+    margin: 0;
+    }
+    
+table.post_preview h6 {
+    padding: 0;
+    margin: 0;
+    }
+
+/* ADMIN */
+
+table.sql_form td.sql_responce_suc {
+    border-style: dotted;
+    border-width: 2px;
+    padding: 8px;
+    border-color: green;
+}
+
+table.sql_form td.sql_responce_war {
+    border-style: dotted;
+    border-width: 2px;
+    padding: 8px;
+    border-color: orange;
+}
+
+table.sql_form td.sql_responce_err {
+    border-style: dotted;
+    border-width: 2px;
+    padding: 8px;
+    border-color: red;
+}
+
+table.sql_form table.sql_responce {
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+table.sql_form table.sql_responce {
+    font-family: monospace;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 80%;
+    border-color: black;
+}
+
+table.sql_responce th {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 2px;
+    text-align: left;
+    background-color: lightgray;
+    font-weight: normal;
+}
+
+table.sql_responce td {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    padding: 2px;
+}
+
+button.shortcut {
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 80%;
+}
+
+td.shortcut {
+    padding-left:8px;
+    white-space: nowrap;
+    font-size: 80%;
+}
+
+ul.hints li {
+    font-size: 70%;
+}

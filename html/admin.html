@@ -1,0 +1,71 @@
+$def with (query, response, status, shortcuts)
+
+<form action="" method="post">
+
+<!-- Title -->
+<table width="100%">
+<tr>
+<td class="title tac" colspan=2>Admin Panel</td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<!-- Shortcuts -->
+<tr>
+<td style="padding:4px" colspan="2">Shortcuts:</td>
+</tr>
+
+$for shortcut in shortcuts:
+    <tr>
+    <td class="shortcut">$shortcut[0]</td>
+    <td class="shortcut" width="100%"><button class="shortcut" id="button" name="shortcut" value="$shortcut[1]">$shortcut[1]</button></td>
+    </tr>
+
+<tr><td><br></td></tr>
+
+<!-- Hints -->
+<tr>
+<td style="padding:4px" colspan="2">Hints:</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<ul class="hints">
+<li>Don't delete users without deleting their posts. The engine wouldn't be able to render orphaned posts.</li>
+<li>You can disable user to disallow him/her from logging in. To do so change password of the user to <i>NULL</i>.</li>
+<li>To learn more about database please read forum.sql file.</li>
+</ul>
+</td>
+</tr>
+</table>
+    
+<table class="sql_form" width="100%">
+<tr><td><br></td></tr>
+
+<!-- Workspace -->
+<tr>
+<td><textarea rows="5" id="query" name="query" placeholder="SQL Query">$query</textarea></td>
+</tr>
+
+<tr>
+<td class="tar"><button id="execute" name="button">Execute</button></td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+$if status == 'E':
+    <td class="sql_responce_err">$:response</td>
+$elif status == 'W':
+    <td class="sql_responce_war">$:response</td>
+$else:
+    <td class="sql_responce_suc">$:response</td>
+</tr>
+</table>
+
+</form>
+
+
+
+
+

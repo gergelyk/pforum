@@ -1,0 +1,5 @@
+#!/bin/bash
+
+APPDIR=$(dirname $(dirname $(readlink -f $0)))
+
+sqlite3 -init $APPDIR/forum.sql $APPDIR/forum.db .quit

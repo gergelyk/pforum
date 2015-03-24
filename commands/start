@@ -1,0 +1,8 @@
+#!/bin/bash
+
+APPDIR=$(dirname $(dirname $(readlink -f $0)))
+
+while true # restarts server if it failed
+do
+  python2 $APPDIR/index.py 8080
+done

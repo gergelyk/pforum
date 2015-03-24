@@ -1,0 +1,107 @@
+$def with (_, posts, user_nick, user_name, user_color, guests, title, preview, message, emots)
+
+<form action="" method="post">
+
+<table class="posts" width="100%">
+
+<!-- Header -->
+<tr>
+<td width="100%" class="title">$title</td>
+<td class="tar"><button class="link" id= "back" name="button" value="back">$_['go_back']</button></td>
+</tr>
+<tr>
+<td class="users">$_['users']: $guests</td>
+</tr>    
+
+<!-- Old Posts -->
+$for post in posts:
+    <tr><td colspan="2">
+    <fieldset>
+    <legend align="right" style="background-color:#$post['color']; font-weight:$post['font_weight']">$post['name'] | $post['date']</legend>
+
+    <table width="100%" class='post_preview'><tr><td class="text">$:post['msg']</td></tr></table>
+    
+    </fieldset>
+    </td></tr>
+
+$if preview:
+    <!-- Preview -->
+    <tr><td width="100%" colspan="2">
+    <fieldset>
+    <legend align="right" style="background-color:#$user_color; font-weight:bold">$user_name</legend>
+    <table width="100%">
+    <tr><td>
+
+    <table width="100%" class='post_preview'><tr><td width="100%" class="text">$:message</td></tr></table>
+    
+    </td></tr>
+    <tr>
+    
+    <td>
+    <table class="post_buttons" width="100%">
+    <tr><td class="tar"><button class="post_button" id="edit" name="button" value="edit">$_['edit']</button></td></tr>
+    <tr><td class="tar"><button class="post_button" id="post" name="button" value="post">$_['post']</button></td></tr>
+    </table>
+    </td>
+    
+    </tr>
+    </table>
+    </fieldset>
+    </td></tr>
+
+$else:
+    <!-- Edit -->
+    <tr><td width="100%" colspan="2">
+    <fieldset>
+    <legend align="right" style="background-color:#$user_color; font-weight:bold">$user_name</legend>
+    <table width="100%">
+    <tr>
+    <td colspan="3"><textarea rows="6" id="message" name="message" placeholder="$_['your_message']" title="$_['markdown_syntax']">$message</textarea></td>
+    </tr>
+    <tr>
+    
+    <td>
+    <table class="emots">
+
+    <!-- Emoticons come from http://www.veryicon.com/icons/emoticon/the-black/-->
+    $for emot_row in emots:
+        <tr>
+        <td>
+        $for emot in emot_row:
+            <input type="image" src="/static/em/$emot" title="$emot" id="$emot" name="emot_$emot">
+        </td>
+        </tr>
+    
+    </table>
+    </td>
+    
+    <td width="100%">
+        <table class="helpers">
+        <tr>
+        <td><input type="image" src="/static/nbsp.png" title="nbsp" id="nbsp" name="nbsp"></td>
+        <td><button class="link" id= "help" name="button" value="help">$_['help']</button></td>
+        </tr>
+        </table>
+    </td>
+    
+    <td>
+    <table class="post_buttons">
+    <tr><td style="padding:0"><button class="post_button" id="preview" name="button" value="preview">$_['preview']</button></td></tr>
+    <tr><td style="padding:0"><button class="post_button" id="post" name="button" value="post">$_['post']</button></td></tr>
+    </table>
+    </td>
+    
+    </tr>
+    </table>
+    </fieldset>
+    </td></tr>
+
+<!-- Footer -->
+<tr>
+<td></td>
+<td align="right"><button class="link" id= "back" name="button" value="back">$_['go_back']</button></td>
+</tr>
+
+</table>
+
+</form>

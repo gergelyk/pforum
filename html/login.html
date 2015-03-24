@@ -1,0 +1,64 @@
+$def with (nick)
+
+<html>
+
+<head>
+$if nick:
+    <title>PForum - $nick</title>
+$else:
+    <title>PForum</title>
+
+<meta charset="UTF-8">
+<meta name="description" content="PForum">
+<meta name="keywords" content="pforum">
+<meta name="author" content="Grzegorz Krasoń">
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/static/global.css">
+</head>
+
+<body>
+<a name="top"></a>
+
+<table width="100%">
+<tr><td align="center">
+    
+    <table width="80%">
+    <tr><td align="center">
+       
+         <!-- ------------------------------------------------------ -->
+        <form action="" method="post">
+
+        <table>
+
+        <tr>
+        <td><input type="text" id="nick" name="nick" value="$nick" placeholder="Nick"></td>
+        </tr>
+
+        <tr>
+        <td><input type="password" id="password" name="password" placeholder="Password"></td>
+        </tr>
+
+        <tr>
+        <td class="tar"><button id="login" name="button">Log in</button></td>
+        </tr>
+
+        </table>
+
+        </form>
+         <!-- ------------------------------------------------------ -->
+
+    </td></tr>
+    </table>
+
+</td></tr>
+</table>
+
+<a name="bottom"></a>
+</body>
+
+</html>
+
+
+
+
+
