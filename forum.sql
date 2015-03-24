@@ -36,7 +36,7 @@ CREATE TABLE HISTORY (
 
 INSERT INTO USERS (nick, pass, name, hue, lang, isadm) VALUES ('admin', '', 'Administrator', 0.0, 'en', 1);
 INSERT INTO THREADS (title, uids, uid) VALUES ('Welcome to PForum', '', 1);
-INSERT INTO POSTS (uid, tid, msg, ts) VALUES (1, 1, 'Please hover your cursor over "User" field on the main page to understand who can read your posts. Have fun! ![](/static/em/victory.png)', 0);
+INSERT INTO POSTS (uid, tid, msg, ts) VALUES (1, 1, 'Please hover your cursor over "User" field on the main page to understand who can read your posts. Have fun! ![](/static/em/smile.png)', 0);
 INSERT INTO POSTS (uid, tid, msg, ts) VALUES (1, 1, 'PForum supports a subset of Markdown syntax. Visit [this](http://www.markitdown.net/markdown) page to check out some examples.', 0);
 
 

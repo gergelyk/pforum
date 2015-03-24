@@ -31,11 +31,11 @@ $if preview:
     <legend align="right" style="background-color:#$user_color; font-weight:bold">$user_name</legend>
     <table width="100%">
     <tr><td>
-
     <table width="100%" class='post_preview'><tr><td width="100%" class="text">$:message</td></tr></table>
-    
     </td></tr>
     <tr>
+    
+    <td width="100%"></td>
     
     <td>
     <table class="post_buttons">
@@ -58,14 +58,13 @@ $else:
     <fieldset>
     <legend align="right" style="background-color:#$user_color; font-weight:bold">$user_name</legend>
     <table width="100%">
-    <tr>
-    <td colspan="3"><textarea rows="6" name="message" placeholder="$_['your_message']" title="$_['markdown_syntax']">$message</textarea></td>
-    </tr>
+    <tr><td colspan="3">
+    <textarea rows="6" name="message" placeholder="$_['your_message']" title="$_['markdown_syntax']">$message</textarea>
+    </td></tr>
     <tr>
     
     <td>
     <table class="emots">
-
     <!-- Emoticons come from http://www.veryicon.com/icons/emoticon/the-black/-->
     $for emot_row in emots:
         <tr>
