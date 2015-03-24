@@ -151,16 +151,16 @@ def del_thread(uid, tid):
 
         uids.remove(uid)
         where='tid = ' + str(tid)
-        if uids:
-            uids_str = str(uids)[1:-1].replace(' ','')
-            try:
+        try:
+            if uids:
+                uids_str = str(uids)[1:-1].replace(' ','')
                 # update list of users
                 webdb.update('THREADS', where=where, uids=uids_str)
-            except: # e.g. database file can be read-only
-                pass
-        else:
-            # remove whole thread
-            webdb.delete('THREADS', where=where)
+            else:
+                # remove whole thread
+                webdb.delete('THREADS', where=where)
+        except: # e.g. database file can be read-only
+            pass
 
 def get_user(uid):
     """Returns details of the user specified by uid"""
@@ -169,7 +169,10 @@ def get_user(uid):
 def set_user(uid, **kwargs):
     """Updates details of the user specified by uid"""
     where = 'uid = ' + str(uid)
-    webdb.update('USERS', where=where, **kwargs)
+    try:    
+        webdb.update('USERS', where=where, **kwargs)
+    except: # e.g. database file can be read-only
+        pass
 
 def get_users():
     """Returns list of all users in database"""
