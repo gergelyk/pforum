@@ -18,7 +18,7 @@ $def with (query, response, status, shortcuts)
 $for shortcut in shortcuts:
     <tr>
     <td class="shortcut">$shortcut[0]</td>
-    <td class="shortcut" width="100%"><button class="shortcut" id="button" name="shortcut" value="$shortcut[1]">$shortcut[1]</button></td>
+    <td class="shortcut" width="100%"><button class="shortcut" name="shortcut" value="$shortcut[1]">$shortcut[1]</button></td>
     </tr>
 
 <tr><td><br></td></tr>
@@ -32,8 +32,9 @@ $for shortcut in shortcuts:
 <td colspan="2">
 <ul class="hints">
 <li>Don't delete users without deleting their posts. The engine wouldn't be able to render orphaned posts.</li>
-<li>You can disable user to disallow him/her from logging in. To do so change password of the user to <i>NULL</i>.</li>
+<li>You can disable user to disallow him from logging in. To do so change password of the user to <i>NULL</i>.</li>
 <li>To learn more about database please read forum.sql file.</li>
+<li>If you're planning to use the forum after finishing administrative task, please re-login.</li>
 </ul>
 </td>
 </tr>
@@ -44,11 +45,11 @@ $for shortcut in shortcuts:
 
 <!-- Workspace -->
 <tr>
-<td><textarea rows="5" id="query" name="query" placeholder="SQL Query">$query</textarea></td>
+<td><textarea rows="5" name="query" placeholder="SQL Query">$query</textarea></td>
 </tr>
 
 <tr>
-<td class="tar"><button id="execute" name="button">Execute</button></td>
+<td class="tar"><button name="execute">Execute</button></td>
 </tr>
 
 <tr><td><br></td></tr>

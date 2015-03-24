@@ -4,34 +4,34 @@ DROP TABLE IF EXISTS USERS;
 DROP TABLE IF EXISTS HISTORY;
 
 CREATE TABLE POSTS (
-        pid INTEGER PRIMARY KEY AUTOINCREMENT, /* post ID > 0 */
-        uid INTEGER,                           /* user ID */
-        tid INTEGER,                           /* thread ID */
-        msg TEXT,                              /* message, anything */
-        ts INTEGER                             /* timestamp */
+        pid INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, /* post ID > 0 */
+        uid INTEGER,                                  /* user ID */
+        tid INTEGER,                                  /* thread ID */
+        msg TEXT,                                     /* message, anything */
+        ts INTEGER                                    /* timestamp */
 );
 
 CREATE TABLE THREADS (
-        tid INTEGER PRIMARY KEY AUTOINCREMENT, /* thread ID > 0 */
-        title TEXT,                            /* title, anything */
-        uids TEXT,                             /* comma separated uids of the users (if empty, then everyone is the user) */
-        uid INTEGER                            /* uid of the creator, just for tracking purposes*/
+        tid INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, /* thread ID > 0 */
+        title TEXT,                                   /* title, anything */
+        uids TEXT,                                    /* comma separated uids of the users (if empty, then everyone is the user) */
+        uid INTEGER                                   /* uid of the creator, just for tracking purposes*/
 );
 
 CREATE TABLE USERS (
-        uid INTEGER PRIMARY KEY AUTOINCREMENT, /* user ID > 0 */
-        nick TEXT,                             /* [a-z0-9.]+ */
-        pass TEXT,                             /* password, anything */
-        name TEXT,                             /* full name, anything */
-        hue REAL,                              /* 0 <= hue <= 1 */
-        lang TEXT,                             /* language */
-        isadm INTEGER                          /* 1 if he/she is an admin, 0 therwise */
+        uid INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, /* user ID > 0 */
+        nick TEXT UNIQUE,                             /* [a-z0-9.]+ */
+        pass TEXT,                                    /* password, anything */
+        name TEXT,                                    /* full name, anything */
+        hue REAL,                                     /* 0 <= hue <= 1 */
+        lang TEXT,                                    /* language */
+        isadm INTEGER                                 /* 1 if he/she is an admin, 0 therwise */
 );
 
 CREATE TABLE HISTORY (
-        uid INTEGER,                           /* who has read*/
-        tid INTEGER,                           /* which thread*/
-        pid INTEGER                            /* what was the last post in it*/
+        uid INTEGER,                                  /* who has read*/
+        tid INTEGER,                                  /* which thread*/
+        pid INTEGER                                   /* what was the last post in it*/
 );
 
 INSERT INTO USERS (nick, pass, name, hue, lang, isadm) VALUES ('admin', '', 'Administrator', 0.0, 'en', 1);

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from copy import copy
 
 def _session_init(session, page_name, page_data):
     """Resets data of current page if the user came from a different one
@@ -15,7 +16,8 @@ def session_init(session, page_data):
     def wrap(f):
         def wrap_(*args, **kwargs):
             page_name = args[0].__class__.__name__
-            _session_init(session, page_name, page_data)
+            page_data_new = copy(page_data)
+            _session_init(session, page_name, page_data_new)
             return f(*args, **kwargs)
         return wrap_
     return wrap

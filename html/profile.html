@@ -1,0 +1,61 @@
+$def with (_, user, color, colors, lang_selected)
+
+<form action="" method="post">
+
+<table class="profile">
+    
+<!-- Nick -->
+<tr>
+<td>$_['nick']:</td>
+<td>$user['nick']</td>
+</tr>
+
+<!-- Name -->
+<tr>
+<td>$_['name']:</td>
+<td><input type="text" autocomplete="off" name="name" value="$user['name']" placeholder="$_['name']" title="$_['name_hint']"></td>
+</tr>
+
+<!-- Hue -->
+<tr>
+<td>$_['hue']:</td>
+<td>
+<button class="cindicator" disabled style="background: #$color" title="$_['hue_hint']">&#160;</button>
+$:colors
+</td>
+</tr>
+
+<!-- Language -->
+<tr>
+<td>$_['lang']:</td>
+<td>
+<select name="lang" title="$_['lang_hint']">
+  <option value="en" $lang_selected['en']>$_['lang_en']</option>
+  <option value="pl" $lang_selected['pl']>$_['lang_pl']</option>
+</select>
+</td>
+</tr>
+
+<!-- Password -->
+<tr>
+<td>$_['pass']:</td>
+<td><input type="password" autocomplete="off" name="pass" value="$user['pass']" placeholder="$_['pass']" title="$_['pass_hint']"></td>
+</tr>
+
+<!-- Buttons -->
+<tr>
+<td></td>
+<td>
+<table>
+<tr>
+<td width="100%" class="tar"><button class="link" name="apply">$_['apply']</button></td>
+<td><button class="link" name="cancel">$_['cancel']</button></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+

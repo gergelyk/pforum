@@ -8,10 +8,8 @@ def _verify(session, users, target, credit):
     allowed = [(u['nick'], u['pass']) for u in users]
     if credit in allowed:
         index = allowed.index(credit)
-        
-        # uid and lang will be added as fields to current session
+        # uid will be added as fields to current session
         session.uid = users[index]['uid']
-        session.lang = users[index]['lang']
         raise web.seeother(target)
 
 def login_prompt(session, users, target, message):

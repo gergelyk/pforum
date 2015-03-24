@@ -1,0 +1,43 @@
+$def with (_, users)
+
+<form action="" method="post">
+
+<table>
+
+<!-- Header -->
+<tr>
+<td colspan="3" class="tar" style="padding-bottom: 4px"><button class="link" name="back">$_['go_back']</button></td>
+</tr>
+
+<!-- Users -->
+<tr>
+<td>
+<table class="users">
+
+<tr>
+<th>#</th>
+<th>$_['nick']</th>
+<th>$_['name']</th>
+</tr>
+$for user in users:
+    <tr style="background-color:#$user['color']">
+    <td>$user['index']</td>
+    <td>$user['nick']</td>
+    <td>$user['name']</td>
+    </tr>
+    
+</table>
+</td>
+</tr>    
+    
+<!-- Footer -->
+<tr>
+<td colspan="3" class="tar" style="padding-top: 4px"><button class="link" name="back">$_['go_back']</button></td>
+</tr>
+    
+</table>
+
+</form>
+
+
+

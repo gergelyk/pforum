@@ -70,6 +70,7 @@ def get_threads(uid):
         result.append({'tid': utils.enc_tid(thread['tid']),
                        'title': thread['title'],
                        'font_weight': ['normal', 'bold'][unread],
+                       'is_public': not bool(thread['uids']),
                        'last_date': utils.ts_to_date(last_post['ts']),
                        'last_name': last_user['name'],
                        'last_color': utils.hue_to_color(last_user['hue']),
@@ -125,23 +126,74 @@ def add_thread(uid, title, nicks):
             succ = False
     
     return succ
+    
+def del_thread(uid, tid):
+    """Removes requestor from the thread and removes the thread if there are no more users left
+       uid - requestor
+       tid - thread to be removed
+    """
+
+    thread = webdb.select('THREADS', where='tid = ' + str(tid))
+
+    # if user manages to click for the second time before webpage is refreshed thread may be already removed
+    if not thread:
+        return
+
+    uids_str = webdb.select('THREADS', where='tid = ' + str(tid))[0]['uids']
+    # public threads cannot be removed
+    if uids_str:
+        uids = [int(uid_str) for uid_str in uids_str.split(',')]
+
+        # if user manages to click for the second time before webpage is refreshed he can be already
+        # removed from the list of users
+        if uid not in uids:
+            return
+
+        uids.remove(uid)
+        where='tid = ' + str(tid)
+        if uids:
+            uids_str = str(uids)[1:-1].replace(' ','')
+            try:
+                # update list of users
+                webdb.update('THREADS', where=where, uids=uids_str)
+            except: # e.g. database file can be read-only
+                pass
+        else:
+            # remove whole thread
+            webdb.delete('THREADS', where=where)
 
 def get_user(uid):
     """Returns details of the user specified by uid"""
     return webdb.select('USERS', where='uid = ' + str(uid), limit=1)[0]
+    
+def set_user(uid, **kwargs):
+    """Updates details of the user specified by uid"""
+    where = 'uid = ' + str(uid)
+    webdb.update('USERS', where=where, **kwargs)
 
 def get_users():
     """Returns list of all users in database"""
     return [u for u in webdb.select('USERS', order='uid')]
 
 def get_user_list():
-    """Returns human-readable list of all users in database (to be displayed in a tooltip)"""
-    users = ['  ' + u['nick'] + ' (' + u['name'] + ')' for u in webdb.select('USERS', order='uid')]
-    return '&#10;'.join(users)
+    """Returns list of all users prepared for being displayed in html table"""
+    users = [u for u in webdb.select('USERS', order='uid')]
+    indices = range(1, len(users) + 1)
+    user_list = [{'index': index,
+                  'nick': u['nick'],
+                  'name': u['name'],
+                  'color': utils.hue_to_color(u['hue']),
+                  } for (u, index) in zip(users, indices)]
+
+    return user_list
     
 def get_uid(nick):
     """Returns uid of the user with given nick"""
     return webdb.select('USERS', where='nick = "' + nick + '"', limit=1)[0]['uid']
+    
+def get_lang(uid):
+    """Returns lang of the user with given uid"""
+    return webdb.select('USERS', where='uid = "' + str(uid) + '"', limit=1)[0]['lang']
     
 def mark_read(uid, tid):
     """Appends an entry to the history which say what was the last post

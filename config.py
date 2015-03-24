@@ -23,4 +23,8 @@ short_msg_max_len = 80
 # For more info see: https://pythonhosted.org/Markdown/extensions/
 md_extensions = ['tables', 'nl2br']
 
+# Length (in pixels) of the colorbar on Profile page
+colorbar_len = 128
 
+# Number of rows to be used for arranging emot icons
+emots_rows = 1

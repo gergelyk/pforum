@@ -1,4 +1,4 @@
-$def with (nick)
+$def with (nick, autofocus)
 
 <html>
 
@@ -31,15 +31,15 @@ $else:
         <table>
 
         <tr>
-        <td><input type="text" id="nick" name="nick" value="$nick" placeholder="Nick"></td>
+        <td><input type="text" name="nick" value="$nick" placeholder="Nick" $autofocus['nick']></td>
         </tr>
 
         <tr>
-        <td><input type="password" id="password" name="password" placeholder="Password"></td>
+        <td><input type="password" name="password" placeholder="Password" $autofocus['password']></td>
         </tr>
 
         <tr>
-        <td class="tar"><button id="login" name="button">Log in</button></td>
+        <td class="tar"><button name="button">Log in</button></td>
         </tr>
 
         </table>
@@ -57,8 +57,3 @@ $else:
 </body>
 
 </html>
-
-
-
-
-

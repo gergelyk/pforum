@@ -12,15 +12,15 @@ th {
     border: 1px dotted blue;
 }
 */
-
-
 /* GLOBALS */
+
 table {
     border-collapse: collapse;
     padding: 0px;
     margin: 0px;
     font-family: sans-serif
 }
+
 td {
     padding: 0px;
     margin: 0px;
@@ -59,11 +59,39 @@ input {
     text-align: right;
 }
 
+button.link {
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+button.link:hover {
+    font-weight: bold;
+}
+
 /* FORUM */
 
-table.title {
+table.title th {
     font-weight: bold;
     font-size: 120%;
+}
+
+table.footer td {
+    font-weight: bold;
+    font-size: 70%;
+    text-align: right;
+    font-weight: normal;
+    color: #AAAAAA;
+}
+
+table.footer a:link {
+    color: #AAAAAA;
+}
+
+table.footer a:visited {
+    color: #AAAAAA;
 }
 
 table.threads {
@@ -104,6 +132,17 @@ table.threads table.thread_form th {
     padding: 0px;
 }
 
+table.threads table.thread_title {
+    font-size: 100%;
+    color: #333333;
+    border-style: none;
+}
+
+table.threads table.thread_title td {
+    border-style: none;
+    padding: 0px;
+}
+
 table.threads input {
     width: 100%;
 }
@@ -125,15 +164,16 @@ table.posts td {
     padding: 4px;
 }
 
-button.link {
+button.delete {
     white-space: nowrap;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
+    color: #AA0000;
 }
 
-button.link:hover {
+button.delete:hover {
     font-weight: bold;
 }
 
@@ -141,14 +181,14 @@ fieldset {
     padding: 0.2em 0.2em;
     border: 1px solid #555555;
     background-color: lightgray;
-    }
+}
 
 legend {
     font-size: 70%;
     padding: 0.2em 0.5em;
     border: 1px solid #555555;
     color: #555555;
-    }
+}
 
 textarea {
     width: 100%;
@@ -157,7 +197,7 @@ textarea {
     border-color: #555555;
     border-width: 1px;
     font-size: 100%;
-    }
+}
 
 button.post_button {
     width: 100px;
@@ -166,7 +206,7 @@ button.post_button {
 
 table.post_preview td.text {
     padding: 4px;
-    }
+}
     
 table.post_buttons td {
     padding: 0px;
@@ -188,56 +228,56 @@ table.helpers td {
 table.post_preview table {
     padding: 0;
     margin: 0;
-    }
+}
 
 table.post_preview td {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview th {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview p {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview ul {
     margin: 0;
-    }
+}
 
 table.post_preview h1 {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview h2 {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview h3 {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview h4 {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview h5 {
     padding: 0;
     margin: 0;
-    }
+}
     
 table.post_preview h6 {
     padding: 0;
     margin: 0;
-    }
+}
 
 /* ADMIN */
 
@@ -266,7 +306,6 @@ table.sql_form table.sql_responce {
     border-style: solid;
     border-width: 1px;
 }
-
 
 table.sql_form table.sql_responce {
     font-family: monospace;
@@ -311,4 +350,59 @@ td.shortcut {
 
 ul.hints li {
     font-size: 70%;
+}
+
+/* USERS */
+
+table.users {
+    font-size: 80%;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+}
+
+table.users th {
+    border-width: 1px;
+    padding: 4px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+
+table.users td {
+    border-width: 1px;
+    padding: 4px;
+    border-style: solid;
+    border-color: #666666;
+    white-space: nowrap;
+}
+
+/* PROFILE */
+
+table.profile td {
+    padding: 4px;
+    white-space: nowrap;
+}
+
+button.clink {
+    font-size: 80%;
+    white-space: nowrap;
+    background: #AA0000;
+    border: none;
+    padding: 0;
+    margin: 0px;
+    cursor: pointer;
+    width: 1px;
+}
+
+button.cindicator {
+    font-size: 80%;
+    white-space: nowrap;
+    background: #AA0000;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666666;
+    padding: 0;
+    margin: 0px;
+    width: 25px;
 }

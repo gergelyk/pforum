@@ -1,0 +1,27 @@
+<div>
+<style type="text/css" scoped>
+th {
+padding: 5px;
+border: solid;
+border-width: 1px;
+border-color: #000000;
+color: #EEEEEE;
+background: #000000;
+}
+td {
+padding: 2px;
+border: solid;
+border-width: 1px;
+color: #222222;
+};
+</style>
+
+List of drivers:<br>
+<br>
+<table>
+<tr><th>#</th><th>Driver</th><th>Car</th></tr>
+<tr><td>1</td><td>Tom</td><td>Ferrari</td></tr>
+<tr><td>2</td><td>John</td><td>Volvo</td></tr>
+<tr><td>3</td><td>Joe</td><td>BMW</td></tr>
+</table>
+</div>
