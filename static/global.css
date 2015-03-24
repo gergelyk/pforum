@@ -279,6 +279,24 @@ table.post_preview h6 {
     margin: 0;
 }
 
+/* USER */
+
+table.md th {
+padding: 5px;
+border: solid;
+border-width: 1px;
+border-color: #000000;
+color: #EEEEEE;
+background: #000000;
+}
+
+table.md td {
+padding: 2px;
+border: solid;
+border-width: 1px;
+color: #222222;
+};
+
 /* ADMIN */
 
 table.sql_form td.sql_responce_suc {
